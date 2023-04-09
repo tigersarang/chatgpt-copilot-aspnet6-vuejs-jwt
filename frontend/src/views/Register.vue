@@ -16,7 +16,8 @@
   </template>
   
   <script>
-  import axios from "axios";
+  import api from "@/services/api";
+  
   
   export default {
     name: "Register",
@@ -31,7 +32,7 @@
     methods: {
       async submitForm() {
         try {
-          const response = await axios.post("https://localhost:7009/api/auth/register", this.registerData);
+          const response = await api.post("/auth/register", this.registerData);
           // 회원 가입 성공 후 처리
         } catch (error) {
           console.log(error);

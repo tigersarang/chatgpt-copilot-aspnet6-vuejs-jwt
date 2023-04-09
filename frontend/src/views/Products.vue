@@ -42,7 +42,8 @@
   </template>
   
   <script>
-  import axios from "axios";
+  import api from "@/services/api";
+  
   
   export default {
     name: "Products",
@@ -59,7 +60,8 @@
     methods: {
       async fetchProducts() {
         try {
-          const response = await axios.get("https://localhost:7009/api/products");
+          console.log("fetchProducts");
+          const response = await api.get("/products");
           this.products = response.data;
         } catch (error) {
           console.log(error);
@@ -70,7 +72,7 @@
       },
       async updateProduct() {
         try {
-          await axios.put(`https://localhost:7009/api/products/${this.editingProduct.id}`, this.editingProduct);
+          await api.put(`/products/${this.editingProduct.id}`, this.editingProduct);
           this.fetchProducts();
           this.editingProduct = null;
         } catch (error) {
@@ -79,7 +81,7 @@
       },
       async deleteProduct(id) {
         try {
-          await axios.delete(`https://localhost:7009/api/products/${id}`);
+          await api.delete(`/products/${id}`);
           this.fetchProducts();
         } catch (error) {
           console.log(error);
@@ -89,13 +91,7 @@
         try {
             const authToken = localStorage.getItem("authToken"); // 저장된 토큰을 가져옵니다.
             console.log(authToken);
-          await axios.post("https://localhost:7009/api/products",  this.newProduct, {
-          headers: {
-            Authorization: `Bearer ${authToken}`, // 헤더에 토큰을 추가합니다.
-            'Access-Control-Allow-Origin': '*', // 모든 URL에서 요청을 허용하는 설정입니다.
-          },
-          
-        });
+          await api.post("/products",  this.newProduct);
           this.fetchProducts();
           this.newProduct.name = "";
           this.newProduct.price = 0;

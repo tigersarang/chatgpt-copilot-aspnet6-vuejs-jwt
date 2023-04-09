@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+cOxukEI00Cc+ChmrMMPNANdDp3dAwe8OaNbtwtR0DVy+umpmL440SdUChuOZpIVP6RNPTkj3rWV9z1uPEkAQw==",
+  "dgSpecHash": "qWBaEoJepFWFB9JunYMp1Mi4yGWveSNfDxocDIamnnX8eIUC8KYY1Gd0CqBVwE4ypNQpfyq/8ZByjmhYF3hSdw==",
   "success": true,
-  "projectFilePath": "G:\\TEMP_STUDY\\aspnet\\vue-study4\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+  "projectFilePath": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tiger\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\tiger\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

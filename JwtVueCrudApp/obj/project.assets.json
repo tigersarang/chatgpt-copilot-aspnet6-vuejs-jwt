@@ -3965,11 +3965,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\TEMP_STUDY\\aspnet\\vue-study4\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+      "projectUniqueName": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
       "projectName": "JwtVueCrudApp",
-      "projectPath": "G:\\TEMP_STUDY\\aspnet\\vue-study4\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+      "projectPath": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
       "packagesPath": "C:\\Users\\tiger\\.nuget\\packages\\",
-      "outputPath": "G:\\TEMP_STUDY\\aspnet\\vue-study4\\JwtVueCrudApp\\obj\\",
+      "outputPath": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
