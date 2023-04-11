@@ -1,17 +1,29 @@
 <template>
-    <div class="register">
-      <h2>Register</h2>
-      <form @submit.prevent="submitForm">
-        <div>
-          <label for="username">Username:</label>
-          <input type="text" id="username" v-model="registerData.username" required />
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header text-center">Sign Up</div>
+                    <div class="card-body">
+                      <form @submit.prevent="submitForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" v-model="registerData.username" id="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" v-model="registerData.password" id="password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" v-model="registerData.password" required />
-        </div>
-        <button type="submit">Register</button>
-      </form>
     </div>
   </template>
   

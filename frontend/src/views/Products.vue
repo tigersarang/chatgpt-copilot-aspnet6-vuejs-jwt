@@ -1,17 +1,23 @@
 <template>
-    <div class="products">
-      <h2>Products</h2>
-      <button @click="fetchProducts">Refresh</button>
-      <table>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">제품 리스트</h1>
+
+      <div class="d-flex mb-3">
+            <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
+            <button @click="fetchProducts" class="btn btn-outline-success" type="submit">검색</button>
+        </div>
+              
+        <table class="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Action</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
+          <!-- 반복문을 사용하여 게시물 정보를 표시합니다. -->                       
           <tr v-for="product in products" :key="product.id">
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
@@ -24,6 +30,20 @@
         </tbody>
       </table>
   
+      <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">다음</a></li>
+            </ul>
+        </nav>
+
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary" type="button">글쓰기</button>
+        </div>        
       <div v-if="editingProduct">
         <h3>Edit Product</h3>
         <label>Name: <input v-model="editingProduct.name" /></label>

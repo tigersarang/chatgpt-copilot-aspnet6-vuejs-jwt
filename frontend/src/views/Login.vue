@@ -1,17 +1,26 @@
 <template>
-    <div class="login">
-      <h2>Login</h2>
-      <form @submit.prevent="submitForm">
-        <div>
-          <label for="username">Username:</label>
-          <input type="text" id="username" v-model="loginData.username" required />
+ <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header text-center">Login</div>
+                    <div class="card-body">
+                      <form @submit.prevent="submitForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Email address</label>
+                                <input type="text" class="form-control" id="username" v-model="loginData.username"  required>
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" v-model="loginData.password"  id="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" v-model="loginData.password" required />
-        </div>
-        <button type="submit">Login</button>
-      </form>
     </div>
   </template>
   
