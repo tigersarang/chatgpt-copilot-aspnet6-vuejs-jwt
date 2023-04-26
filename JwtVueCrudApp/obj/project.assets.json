@@ -3959,27 +3959,24 @@
   },
   "packageFolders": {
     "C:\\Users\\tiger\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+      "projectUniqueName": "G:\\TEMP_STUDY\\aspnet\\vue-study6\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
       "projectName": "JwtVueCrudApp",
-      "projectPath": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+      "projectPath": "G:\\TEMP_STUDY\\aspnet\\vue-study6\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
       "packagesPath": "C:\\Users\\tiger\\.nuget\\packages\\",
-      "outputPath": "Z:\\새 폴더\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\obj\\",
+      "outputPath": "G:\\TEMP_STUDY\\aspnet\\vue-study6\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\tiger\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -4059,7 +4056,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

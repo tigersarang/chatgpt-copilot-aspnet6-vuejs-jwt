@@ -46,7 +46,7 @@ namespace JwtVueCrudApp.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginModel model)
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -54,24 +54,13 @@ namespace JwtVueCrudApp.Controllers
 
                 if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
                 {
-                    var tokenHandler = new JwtSecurityTokenHandler();
-                    var key = Encoding.ASCII.GetBytes(_configuration["JwtSettings:SecretKey"]);
-                    var tokenDescriptor = new SecurityTokenDescriptor
-                    {
-                        Subject = new ClaimsIdentity(new Claim[]
-                        {
-                            new Claim(ClaimTypes.Name, user.UserName),
-                            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                        }),
-                        Expires = DateTime.UtcNow.AddDays(7),
-                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                        Issuer = _configuration["JwtSettings:Issuer"],
-                        Audience = _configuration["JwtSettings:Audience"]
-                    };
-                    var token = tokenHandler.CreateToken(tokenDescriptor);
-                    var tokenString = tokenHandler.WriteToken(token);
+                    string accessToken = GenerateAccessToken(user);
+                    string refreshToken = GenerateRefreshToken();
 
-                    return Ok(new { Token = tokenString });
+                    user.RefreshToken = refreshToken;
+                    user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
+                    await _dbContext.SaveChangesAsync();
+                    return Ok(new { Token = accessToken, RefreshToken = refreshToken });
                 }
                 else
                 {
@@ -79,6 +68,53 @@ namespace JwtVueCrudApp.Controllers
                 }
             }
             return BadRequest(ModelState);
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh(RefreshTokenDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                // User에 refresh token이 있는지 확인. 그리고 refresh token이 만료되지 않았는지 확인.
+                var user = _dbContext.Users.SingleOrDefault(u => u.RefreshToken == model.RefreshToken && u.RefreshTokenExpiry > DateTime.UtcNow);
+
+                if (user != null)
+                {
+                    string accessToken = GenerateAccessToken(user);
+                    return Ok(new { Token = accessToken });
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+            }
+            return BadRequest(ModelState);
+        }
+
+        private string GenerateRefreshToken()
+        {
+            return Guid.NewGuid().ToString();
+        }
+
+        private string GenerateAccessToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["JwtSettings:SecretKey"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                            new Claim(ClaimTypes.Name, user.UserName),
+                            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddSeconds(10),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _configuration["JwtSettings:Issuer"],
+                Audience = _configuration["JwtSettings:Audience"]
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+            return tokenString;
         }
     }
 }
