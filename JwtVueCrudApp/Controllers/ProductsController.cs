@@ -2,6 +2,7 @@
 using JwtVueCrudApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JwtVueCrudApp.Controllers
 {
@@ -19,10 +20,27 @@ namespace JwtVueCrudApp.Controllers
 
         // GET: api/products
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10, [FromQuery] string search = null)            
         {
-            var products = _dbContext.Products.ToList();
-            return Ok(products);
+            if (pageNumber < 1 || pageSize < 1) return BadRequest();
+
+            IQueryable<Product> query = _dbContext.Products;
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Name.Contains(search));
+            }
+
+            var products = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            int totalItems = await query.CountAsync();
+            int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            return Ok(new { products, totalPages });
+
         }
 
         // GET: api/products/{id}
