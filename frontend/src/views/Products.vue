@@ -14,44 +14,44 @@
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <!-- 반복문을 사용하여 게시물 정보를 표시합니다. -->
                 <tr v-for="product in products" :key="product.id">
                     <td>{{ product.id }}</td>
-                    <td>{{ product.name }}</td>
+                    <td>
+                        <router-link :to="{ name: 'productEdit', params: { id: product.id } }">{{ product.name }}</router-link>
+                    </td>
                     <td>{{ product.price }}</td>
                     <td>
-                        <button @click="editProduct(product)">Edit</button>
                         <button @click="deleteProduct(product.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-
+        
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item"><button @click="goToFirstPage" class="page-link" :disabled="currentPage === 1">First</button></li>
-                <li class="page-item"><button @click="prevPage"  class="page-link" :disabled="currentPage <= 1">Prev</button></li>
+                <li class="page-item"><button @click="prevPage" class="page-link" :disabled="currentPage <= 1">Prev</button></li>
                 <li class="page-item">
-                    <button 
-                            v-for="page in visiblePages"
+                    <button v-for="page in visiblePages"
                             :key="page"
                             @click="goToPage(page)"
                             :disabled="page === currentPage">
                         <span class="page-item">{{ page }}</span>
                     </button>
                 </li>
-                <li class="page-item"><button @click="nextPage"  class="page-link" :disabled="currentPage >= totalPages">Next</button></li>
-                <li class="page-item"><button @click="goToLastPage"  class="page-link" :disabled="currentPage === totalPages">Last</button></li>
+                <li class="page-item"><button @click="nextPage" class="page-link" :disabled="currentPage >= totalPages">Next</button></li>
+                <li class="page-item"><button @click="goToLastPage" class="page-link" :disabled="currentPage === totalPages">Last</button></li>
             </ul>
         </nav>
 
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary" type="button">글쓰기</button>
+            <router-link to="/productCreate">글쓰기</router-link>
         </div>
         <div v-if="editingProduct">
             <h3>Edit Product</h3>
@@ -129,9 +129,6 @@
             goToLastPage() {
                 this.currentPage = this.totalPages;
                 this.fetchProducts();
-            },
-            editProduct(product) {
-                this.editingProduct = { ...product };
             },
             async updateProduct() {
                 try {

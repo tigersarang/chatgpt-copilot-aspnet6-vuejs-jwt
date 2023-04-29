@@ -49,7 +49,7 @@ import EventBus from "../events/eventBus";
                     saveRefreshToken(response.data.refreshToken); // 리프레시 토큰을 로컬 스토리지에 저장
 
                     EventBus.emit('login');
-                    this.$router.push({ name: "Home" }); // 홈 화면으로 리다이렉트
+                    this.$router.push({ name: "home" }); // 홈 화면으로 리다이렉트
 
                 } catch (error) {
                     alert(error);
