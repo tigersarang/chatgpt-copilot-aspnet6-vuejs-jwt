@@ -12,8 +12,7 @@
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">설명</label>
-                <MyEditor />
-                <input v-model="product.content" type="text" class="form-control" id="content" required>
+                <QuillEditor theme="snow" v-model="product.content" toolbar="full" style="height:300px;" />
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button type="submit" class="btn btn-primary">작성 완료</button>
@@ -25,14 +24,12 @@
 
 <script>
     import api from "@/services/api";
-    import MyEditor from "@/views/MyEditor.vue";
-
 
     export default {
         name: "Products",
         data() {
             return {
-                product: { name: "", price: 0 },
+                product: { name: "", price: 0, content:"" },
             };
         },
         methods: {

@@ -15,5 +15,7 @@ namespace JwtVueCrudApp.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
+
+        public string Content { get; set; }
     }
 }
