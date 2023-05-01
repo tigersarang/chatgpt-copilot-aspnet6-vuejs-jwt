@@ -10,6 +10,11 @@
                 <label for="price" class="form-label">가격</label>
                 <input v-model="product.price" type="text" class="form-control" id="price" required>
             </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">설명</label>
+                <MyEditor />
+                <input v-model="product.content" type="text" class="form-control" id="content" required>
+            </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button type="submit" class="btn btn-primary">작성 완료</button>
                 <button type="button" class="btn btn-secondary">취소</button>
@@ -20,6 +25,7 @@
 
 <script>
     import api from "@/services/api";
+    import MyEditor from "@/views/MyEditor.vue";
 
 
     export default {

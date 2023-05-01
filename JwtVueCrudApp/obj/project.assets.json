@@ -3964,11 +3964,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\TEMP_STUDY\\aspnet\\vue-study6\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+      "projectUniqueName": "G:\\TEMP_STUDY\\aspnet\\vue-study7\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
       "projectName": "JwtVueCrudApp",
-      "projectPath": "G:\\TEMP_STUDY\\aspnet\\vue-study6\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
+      "projectPath": "G:\\TEMP_STUDY\\aspnet\\vue-study7\\JwtVueCrudApp\\JwtVueCrudApp.csproj",
       "packagesPath": "C:\\Users\\tiger\\.nuget\\packages\\",
-      "outputPath": "G:\\TEMP_STUDY\\aspnet\\vue-study6\\chatgpt-copilot-aspnet6-vuejs-jwt\\JwtVueCrudApp\\obj\\",
+      "outputPath": "G:\\TEMP_STUDY\\aspnet\\vue-study7\\JwtVueCrudApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

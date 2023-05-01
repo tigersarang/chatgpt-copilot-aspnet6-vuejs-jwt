@@ -46,6 +46,7 @@
         try {
           const response = await api.post("/auth/register", this.registerData);
           // 회원 가입 성공 후 처리
+            this.$router.push({ name: "home" }); // 홈 화면으로 리다이렉트
         } catch (error) {
           console.log(error);
         }
