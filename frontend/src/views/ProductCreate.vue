@@ -12,7 +12,6 @@
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">설명</label>
-                <QuillEditor theme="snow" v-model="product.content" toolbar="full" style="height:300px;" />
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button type="submit" class="btn btn-primary">작성 완료</button>
@@ -43,9 +42,6 @@
                     console.log(error);
                 }
             },
-            cancelEdit() {
-                this.editingProduct = null;
-            }
         }
     };
 </script>
